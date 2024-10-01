@@ -1,6 +1,7 @@
 # CRUD Example using Mockapi
 
-이 프로젝트는 한동대학교 2024년도 2학기 오픈소스 스튜디오 참고를 위한 자료입니다.
+이 프로젝트는 한동대학교 2024년도 2학기 오픈소스 스튜디오 참고를 위한 자료입니다. <br/>
+[demo site link](https://oss-crud-example.vercel.app/)
 
 ## 프로젝트 개요
 
