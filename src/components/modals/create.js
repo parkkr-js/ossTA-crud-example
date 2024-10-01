@@ -2,9 +2,8 @@ import { Modal, Form, Input, Button } from "antd";
 import axios from "axios";
 
 const CreateModal = ({ open, onClose }) => {
-  const [form] = Form.useForm(); // useForm으로 생성한 form 인스턴스
+  const [form] = Form.useForm();
 
-  // 폼 제출 처리
   const handleCreate = async (values) => {
     try {
       await axios.post(
@@ -22,20 +21,18 @@ const CreateModal = ({ open, onClose }) => {
     }
   };
 
-  // 폼 제출 실패 처리
   const onFinishFailed = (errorInfo) => {
     console.log("글 작성 실ㅍ:", errorInfo);
   };
 
   return (
     <Modal open={open} title="새 글 작성" onCancel={onClose} footer={null}>
-      {/* form 인스턴스를 Form 컴포넌트에 전달 */}
       <Form
         form={form}
         layout="vertical"
         name="createPost"
-        onFinish={handleCreate} // 폼 제출 성공 시 호출
-        onFinishFailed={onFinishFailed} // 폼 제출 실패 시 호출
+        onFinish={handleCreate}
+        onFinishFailed={onFinishFailed}
       >
         <Form.Item
           name="title"

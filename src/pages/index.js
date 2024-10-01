@@ -45,6 +45,17 @@ const Home = () => {
     fetchData();
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+
+    return `${year}년 ${month}월 ${day}일 ${hours}시 ${minutes}분`;
+  };
+
   const handleDeletePost = async (postId) => {
     try {
       await axios.delete(
@@ -75,7 +86,7 @@ const Home = () => {
       <Content>
         <Row gutter={[24, 24]}>
           {posts.map((post) => (
-            <Col xs={240} sm={12} md={8} key={post.id}>
+            <Col xs={24} sm={12} md={8} key={post.id}>
               <Card
                 title={post.title}
                 actions={[
@@ -99,8 +110,12 @@ const Home = () => {
               >
                 <p>{post.content}</p>
                 <p style={{ color: "gray" }}>작성자: {post.writer}</p>
-                <p style={{ color: "gray" }}>생성일: {post.createdAt}</p>
-                <p style={{ color: "gray" }}>수정일: {post.modifiedAt}</p>
+                <p style={{ color: "gray" }}>
+                  생성일: {formatDate(post.createdAt)}
+                </p>
+                <p style={{ color: "gray" }}>
+                  수정일: {formatDate(post.modifiedAt)}
+                </p>
               </Card>
             </Col>
           ))}
